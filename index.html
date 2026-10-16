@@ -1,0 +1,859 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>La Historia de la Vida</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Figtree:wght@400;500;600&display=swap">
+<style>
+/* Layout: columna de lectura única de 860px, hero asimétrico con rama de hojas, secciones separadas por una nervadura fina. */
+:root{
+  --bg:#f2f5ec; --surface:#fafcf6; --ink:#1e2d21; --muted:#56685a;
+  --moss:#3b6847; --fern:#7aa56b; --leaf-soft:#dfead6; --line:#cddac4; --clay:#a8683a;
+  --display:"Fraunces",Georgia,"Times New Roman",serif;
+  --body:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#111912; --surface:#18231a; --ink:#e4eede; --muted:#9db09f;
+    --moss:#8fc28d; --fern:#6f9f68; --leaf-soft:#213325; --line:#2c3e30; --clay:#d09a6c; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#111912; --surface:#18231a; --ink:#e4eede; --muted:#9db09f;
+  --moss:#8fc28d; --fern:#6f9f68; --leaf-soft:#213325; --line:#2c3e30; --clay:#d09a6c; color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.65;margin:0}
+.wrap{max-width:860px;margin-inline:auto;padding-inline:max(16px,env(safe-area-inset-left,0px)) max(16px,env(safe-area-inset-right,0px))}
+body{padding-inline:0}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+a{color:var(--moss);text-underline-offset:3px}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible{outline:3px solid var(--fern);outline-offset:2px;border-radius:6px}
+h1,h2,h3{font-family:var(--display);font-weight:600;line-height:1.15;text-wrap:balance;margin:0}
+h2{font-size:clamp(1.7rem,4.5vw,2.3rem)}
+h3{font-size:1.25rem}
+h4{margin:0;font-size:1rem}
+p{margin:0}
+.eyebrow{font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--moss);font-weight:600;display:flex;align-items:center;gap:.5rem}
+.eyebrow svg{width:16px;height:16px;fill:var(--fern)}
+.muted{color:var(--muted)}
+.small{font-size:.9rem}
+
+/* top bar */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:var(--bg);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:1rem;padding-block:.6rem}
+.brand{font-family:var(--display);font-weight:700;white-space:nowrap;display:flex;gap:.5rem;align-items:center;color:var(--ink);text-decoration:none}
+.brand svg{width:22px;height:22px;fill:var(--moss)}
+.nav{display:flex;gap:.25rem;overflow-x:auto;min-width:0;scrollbar-width:thin}
+.nav a{white-space:nowrap;text-decoration:none;color:var(--muted);font-size:.88rem;padding:.3rem .65rem;border-radius:99px}
+.nav a:hover{background:var(--leaf-soft);color:var(--ink)}
+
+/* hero */
+.hero{display:grid;grid-template-columns:1.25fr .75fr;gap:2rem;align-items:center;padding-block:3.5rem 2.5rem}
+.hero h1{font-size:clamp(2.3rem,6.5vw,3.9rem);margin-block:.8rem 1.2rem;font-weight:700}
+.hero h1 em{font-style:italic;color:var(--moss);font-weight:600}
+.lead{font-size:1.15rem;color:var(--muted);max-width:34em}
+.ask{margin-top:1.6rem;padding:1rem 1.2rem;border-left:3px solid var(--fern);background:var(--surface);border-radius:0 12px 12px 0;font-family:var(--display);font-size:1.15rem;max-width:30em}
+.branch{width:100%;max-width:340px;justify-self:center}
+.lf1{fill:var(--fern)} .lf2{fill:var(--moss)} .lf3{fill:var(--leaf-soft);stroke:var(--fern);stroke-width:1}
+.vein{fill:none;stroke:var(--bg);stroke-width:1.4;opacity:.6}
+.stem{fill:none;stroke:var(--moss);stroke-width:3;stroke-linecap:round}
+@media (max-width:700px){.hero{grid-template-columns:1fr;padding-block:2rem 1.5rem}.branch{max-width:240px;justify-self:start;order:-1}}
+
+/* sections */
+section{padding-block:3rem 1rem;scroll-margin-top:4rem}
+.sec-head{display:flex;flex-direction:column;gap:.6rem;margin-bottom:1.4rem}
+.vein-line{height:1px;background:linear-gradient(90deg,var(--line) 0,var(--line) 100%);margin-top:2rem;position:relative}
+.vein-line::after{content:"";position:absolute;left:0;top:-3px;width:7px;height:7px;border-radius:50%;background:var(--fern)}
+.stack{display:flex;flex-direction:column;gap:1.1rem}
+.prose{display:flex;flex-direction:column;gap:1rem;max-width:65ch}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:1rem}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:1.1rem 1.2rem;display:flex;flex-direction:column;gap:.5rem;min-width:0}
+.card h3{color:var(--moss)}
+.tag{display:inline-block;font-size:.75rem;padding:.1rem .6rem;border-radius:99px;background:var(--leaf-soft);color:var(--moss);font-weight:600;align-self:flex-start}
+.note{background:var(--leaf-soft);border-radius:12px;padding:.9rem 1.1rem;font-size:.95rem}
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:560px;font-size:.95rem}
+th,td{text-align:left;padding:.7rem .9rem;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:var(--display);color:var(--moss);font-weight:600;background:var(--leaf-soft)}
+tr:last-child td{border-bottom:0}
+td:first-child{font-weight:600;white-space:nowrap}
+ul.clean{margin:0;padding-left:1.1rem;display:flex;flex-direction:column;gap:.3rem}
+details{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:.2rem 1.1rem}
+summary{cursor:pointer;padding:.7rem 0;font-weight:600;font-family:var(--display)}
+details[open] summary{color:var(--moss)}
+details>div{padding-bottom:1rem;display:flex;flex-direction:column;gap:.5rem}
+figure{margin:0}
+figcaption{font-size:.85rem;color:var(--muted);margin-top:.4rem}
+
+/* fossils */
+.fossil{width:100%;height:150px;background:var(--leaf-soft);border-radius:10px}
+.fossil *{vector-effect:non-scaling-stroke}
+.fs{fill:var(--surface);stroke:var(--moss);stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
+.fl{fill:none;stroke:var(--moss);stroke-width:1.6;stroke-linecap:round}
+.era{display:grid;grid-template-columns:200px 1fr;gap:1.2rem;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:1.1rem}
+.era>*{min-width:0}
+.era dl{margin:0}
+@media (max-width:640px){.era{grid-template-columns:1fr}}
+.clock{display:flex;height:22px;border-radius:99px;overflow:hidden;border:1px solid var(--line)}
+.clock i{display:block}
+.legend{display:flex;flex-wrap:wrap;gap:.4rem 1.2rem;font-size:.88rem;margin-top:.6rem}
+.legend b{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:.35rem}
+dl.fi{display:grid;grid-template-columns:auto 1fr;gap:.25rem .8rem;margin:0;font-size:.92rem}
+dl.fi dt{color:var(--muted)} dl.fi dd{margin:0}
+@media (max-width:420px){dl.fi{grid-template-columns:1fr;gap:0}dl.fi dd{margin-bottom:.4rem}}
+
+/* comic */
+.comic{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem}
+.comic>div{background:var(--surface);border:2px solid var(--moss);border-radius:10px;padding:.7rem;font-size:.88rem;display:flex;flex-direction:column;gap:.4rem;min-width:0}
+.comic svg{width:100%;height:70px;background:var(--leaf-soft);border-radius:6px}
+@media (max-width:560px){.comic{grid-template-columns:1fr}}
+
+/* charts */
+.chart{width:100%;height:auto;background:var(--surface);border:1px solid var(--line);border-radius:12px}
+.chart text{fill:var(--muted);font-family:var(--body);font-size:12px}
+.chart .ax{stroke:var(--line);stroke-width:1.5}
+.chart .before{fill:none;stroke:var(--muted);stroke-width:2;stroke-dasharray:5 4}
+.chart .after{fill:none;stroke:var(--moss);stroke-width:3}
+.chart .tl{stroke:var(--moss);stroke-width:2;fill:none;stroke-linecap:round}
+.chart .lbl{fill:var(--ink);font-size:13px}
+.chart .mk{fill:var(--clay);font-size:12px;font-weight:600}
+.chart .p0{stroke:var(--moss)} .chart .p1{stroke:var(--fern)} .chart .p2{stroke:var(--clay)}
+.chart polyline{fill:none;stroke-width:2.2;stroke-linejoin:round}
+.sim{display:flex;flex-wrap:wrap;gap:1rem;align-items:center}
+.sim label{display:flex;gap:.6rem;align-items:center;font-weight:600}
+input[type=range]{accent-color:var(--moss)}
+.btn{font:inherit;font-weight:600;background:var(--moss);color:var(--bg);border:0;border-radius:99px;padding:.55rem 1.2rem;cursor:pointer}
+.btn:hover{filter:brightness(1.08)}
+.btn.ghost{background:transparent;color:var(--moss);border:1.5px solid var(--moss)}
+.scroll{overflow-x:auto}
+
+/* games */
+.q{display:flex;flex-direction:column;gap:.8rem}
+.opts{display:grid;gap:.5rem}
+.opt{font:inherit;text-align:left;background:var(--surface);color:var(--ink);border:1.5px solid var(--line);border-radius:10px;padding:.65rem .9rem;cursor:pointer}
+.opt:hover:not(:disabled){border-color:var(--fern)}
+.opt.ok{border-color:var(--moss);background:var(--leaf-soft)}
+.opt.bad{border-color:var(--clay)}
+.mem{display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem}
+@media (max-width:560px){.mem{grid-template-columns:repeat(3,1fr)}}
+.tile{font:inherit;font-size:.82rem;line-height:1.3;min-height:84px;border-radius:10px;border:1.5px solid var(--line);background:var(--moss);color:var(--bg);cursor:pointer;padding:.4rem;display:flex;align-items:center;justify-content:center;text-align:center}
+.tile.up{background:var(--surface);color:var(--ink)}
+.tile.done{background:var(--leaf-soft);color:var(--moss);border-color:var(--fern);font-weight:600}
+.tile svg{width:26px;height:26px;fill:var(--bg);opacity:.8}
+
+/* forum */
+form.f{display:grid;gap:.7rem}
+.f label{display:flex;flex-direction:column;gap:.25rem;font-weight:600;font-size:.9rem}
+.f input,.f select,.f textarea{font:inherit;font-weight:400;background:var(--surface);color:var(--ink);border:1.5px solid var(--line);border-radius:10px;padding:.55rem .75rem;width:100%}
+.f .two{display:grid;grid-template-columns:1fr 1fr;gap:.7rem}
+@media (max-width:520px){.f .two{grid-template-columns:1fr}}
+.post{border-left:3px solid var(--fern);padding:.2rem 0 .2rem .9rem;display:flex;flex-direction:column;gap:.2rem}
+.post .meta{font-size:.82rem;color:var(--muted)}
+.post p{white-space:pre-wrap;overflow-wrap:anywhere}
+footer{padding-block:3rem 4rem;color:var(--muted);font-size:.9rem}
+.hide-s{display:inline}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="leaf" viewBox="0 0 40 80"><path d="M20 2C37 22 39 52 20 78 1 52 3 22 20 2Z"/><path class="vein" d="M20 12V72M20 34L30 24M20 46L10 36M20 58L30 48"/></symbol>
+  <symbol id="leafi" viewBox="0 0 40 80"><path d="M20 2C37 22 39 52 20 78 1 52 3 22 20 2Z"/></symbol>
+</svg>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#inicio"><svg viewBox="0 0 40 80" aria-hidden="true"><use href="#leafi"/></svg>La Historia de la Vida</a>
+    <nav class="nav" aria-label="Secciones">
+      <a href="#evolucion">Evolución</a><a href="#fijismo">Fijismo</a><a href="#fosiles">Fósiles</a><a href="#eras">Eras</a><a href="#mecanismos">Mecanismos</a><a href="#especiacion">Especiación</a><a href="#consecuencias">Consecuencias</a><a href="#micromacro">Micro y macro</a><a href="#extinciones">Extinciones</a><a href="#galeria">Galería</a><a href="#juegos">Juegos</a><a href="#foro">Foro</a><a href="#biblio">Bibliografía</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="wrap">
+
+<!-- INICIO -->
+<div class="hero" id="inicio">
+  <div>
+    <div class="eyebrow"><svg viewBox="0 0 40 80"><use href="#leafi"/></svg>Blog de biología</div>
+    <h1>La Historia de la Vida: <em>Evolución</em> y Fijismo</h1>
+    <p class="lead">La evolución es el proceso por el cual las poblaciones de seres vivos cambian a lo largo de muchas generaciones. Gracias a ella existen los más de un millón de especies que conocemos y también las que ya desaparecieron. Aquí recorremos cómo se explicó la vida antes, cómo la explicamos hoy y qué pruebas lo respaldan.</p>
+    <p class="ask">¿Por qué un colibrí y un dinosaurio comparten un antepasado, y por qué tu mano se parece al ala de un murciélago?</p>
+  </div>
+  <svg class="branch" viewBox="0 0 300 380" role="img" aria-label="Rama con hojas">
+    <path class="stem" d="M150 370C150 300 140 230 160 150C170 100 190 60 200 20"/>
+    <g>
+      <use class="lf2" href="#leaf" width="40" height="80" transform="translate(150 330) rotate(-62) translate(-20 -80)"/>
+      <use class="lf1" href="#leaf" width="40" height="80" transform="translate(150 300) rotate(58) translate(-20 -80)"/>
+      <use class="lf3" href="#leaf" width="40" height="80" transform="translate(146 250) rotate(-55) translate(-20 -80)"/>
+      <use class="lf2" href="#leaf" width="40" height="80" transform="translate(150 215) rotate(62) translate(-20 -80)"/>
+      <use class="lf1" href="#leaf" width="40" height="80" transform="translate(154 175) rotate(-50) translate(-20 -80)"/>
+      <use class="lf3" href="#leaf" width="40" height="80" transform="translate(162 140) rotate(55) translate(-20 -80)"/>
+      <use class="lf2" href="#leaf" width="40" height="80" transform="translate(172 100) rotate(-42) translate(-20 -80)"/>
+      <use class="lf1" href="#leaf" width="40" height="80" transform="translate(184 68) rotate(40) translate(-20 -80)"/>
+      <use class="lf2" href="#leaf" width="40" height="80" transform="translate(200 22) rotate(4) translate(-20 -80)"/>
+    </g>
+  </svg>
+</div>
+
+<div class="note"><strong>Un dato para empezar.</strong> Si los 4.600 millones de años de la Tierra cupieran en un día de 24 horas, los primeros animales con esqueleto aparecerían hacia las 21:00 y nuestra especie, <em>Homo sapiens</em>, unos 6 segundos antes de la medianoche.</div>
+
+<!-- TEORIA DE LA EVOLUCION -->
+<section id="evolucion">
+  <div class="sec-head">
+    <div class="eyebrow"><svg viewBox="0 0 40 80"><use href="#leafi"/></svg>Temática 1</div>
+    <h2>Teoría de la evolución</h2>
+  </div>
+  <div class="stack">
+    <div class="prose">
+      <p>Hablamos de evolución cuando las características heredables de una población cambian de una generación a otra. Tres naturalistas marcaron este camino.</p>
+    </div>
+    <div class="grid">
+      <div class="card"><span class="tag">1809</span><h3>Jean-Baptiste Lamarck</h3>
+        <p>Propuso que los seres vivos cambian con el tiempo. Pensaba que el <strong>uso y desuso</strong> de los órganos los modifica y que esos cambios se heredan. Su ejemplo famoso: la jirafa estira el cuello para alcanzar hojas y sus crías nacen con el cuello más largo.</p>
+        <p class="small muted">Hoy sabemos que lo que adquirimos en vida (un músculo, una cicatriz) no pasa a los hijos por los genes, pero fue la primera teoría que explicó el cambio de las especies.</p></div>
+      <div class="card"><span class="tag">1859</span><h3>Charles Darwin</h3>
+        <p>Tras su viaje en el <em>HMS Beagle</em> y años de observación, publicó <em>El origen de las especies</em>. Explica que los individuos de una población varían, que esas variaciones se heredan y que los mejor ajustados a su ambiente dejan más descendientes. Lo llamó <strong>selección natural</strong>.</p></div>
+      <div class="card"><span class="tag">1858</span><h3>Alfred Russel Wallace</h3>
+        <p>Trabajando en el archipiélago malayo, llegó por su cuenta a la misma idea que Darwin. Ambos presentaron sus ideas juntas en la Sociedad Linneana de Londres en 1858. Wallace también fue pionero de la biogeografía.</p></div>
+    </div>
+
+    <h3>La selección natural en cuatro pasos</h3>
+    <div class="grid">
+      <div class="card"><h4>1. Variación</h4><p class="small">Los individuos de una población no son idénticos: unos son más grandes, más claros, más rápidos.</p></div>
+      <div class="card"><h4>2. Herencia</h4><p class="small">Parte de esas diferencias pasa de padres a hijos por los genes.</p></div>
+      <div class="card"><h4>3. Más crías que recursos</h4><p class="small">Nacen más individuos de los que el ambiente puede sostener, así que no todos sobreviven.</p></div>
+      <div class="card"><h4>4. Éxito diferencial</h4><p class="small">Quienes tienen rasgos útiles en ese ambiente dejan más descendencia. Con las generaciones, esos rasgos se vuelven comunes.</p></div>
+    </div>
+    <p class="muted small">Una analogía: la selección natural funciona como un colador. No crea las partículas, solo deja pasar más las que encajan con el tamaño de los agujeros.</p>
+
+    <h3>Ejemplo 1: las polillas de Manchester</h3>
+    <div class="prose"><p>La polilla <em>Biston betularia</em> tiene una forma clara y otra oscura. Antes de la Revolución Industrial en Inglaterra casi todas eran claras, porque se camuflaban sobre troncos cubiertos de líquenes. Con el hollín de las fábricas los troncos se oscurecieron, las claras quedaron expuestas a las aves y las oscuras pasaron a ser mayoría. Cuando se redujo la contaminación, volvieron a abundar las claras.</p></div>
+    <div class="comic" role="group" aria-label="Historieta de las polillas">
+      <div><svg viewBox="0 0 120 70" aria-hidden="true"><rect width="120" height="70" fill="none"/><rect x="0" y="0" width="120" height="70" style="fill:var(--leaf-soft)"/><ellipse cx="60" cy="35" rx="26" ry="9" style="fill:var(--surface);stroke:var(--fern)" stroke-width="2"/></svg><strong>1820</strong><span>Tronco claro con líquenes. La polilla clara casi no se ve.</span></div>
+      <div><svg viewBox="0 0 120 70" aria-hidden="true"><rect width="120" height="70" style="fill:var(--moss);opacity:.55"/><ellipse cx="60" cy="35" rx="26" ry="9" style="fill:var(--surface);stroke:var(--clay)" stroke-width="2"/></svg><strong>1850</strong><span>El hollín oscurece el tronco. Un ave ve a la clara de lejos.</span></div>
+      <div><svg viewBox="0 0 120 70" aria-hidden="true"><rect width="120" height="70" style="fill:var(--moss);opacity:.55"/><ellipse cx="60" cy="35" rx="26" ry="9" style="fill:var(--ink)"/></svg><strong>1900</strong><span>Ahora la oscura pasa desapercibida y deja más crías.</span></div>
+    </div>
+
+    <h3>Ejemplo 2: los pinzones de Darwin</h3>
+    <div class="prose"><p>En las islas Galápagos, Darwin encontró aves muy parecidas con picos distintos. Hoy sabemos que descienden de un ancestro llegado desde el continente. En cada isla, el tamaño y la forma del pico se ajustaron al alimento disponible: semillas duras, insectos o flores de cactus. Los biólogos Peter y Rosemary Grant midieron durante décadas esos picos en la isla Daphne Mayor y vieron que, tras una sequía, los pinzones de pico más grueso sobrevivieron más porque podían abrir semillas duras.</p></div>
+  </div>
+  <div class="vein-line"></div>
+</section>
+
+<!-- FIJISMO -->
+<section id="fijismo">
+  <div class="sec-head">
+    <div class="eyebrow"><svg viewBox="0 0 40 80"><use href="#leafi"/></svg>Temática 1</div>
+    <h2>Fijismo</h2>
+  </div>
+  <div class="stack">
+    <div class="prose">
+      <p>El fijismo sostiene que las especies fueron creadas tal como son y no cambian con el tiempo. Durante siglos fue la explicación dominante en Europa, ligada a la lectura literal del relato bíblico de la creación. Era como un libro terminado: nada se añade ni se modifica.</p>
+      <p>Así explicaba esta visión lo que se veía en la naturaleza:</p>
+      <ul class="clean">
+        <li><strong>La diversidad de especies:</strong> cada una fue creada con su forma actual y con un lugar fijo en el orden natural.</li>
+        <li><strong>La adaptación:</strong> el pico del colibrí o el cuello de la jirafa existen porque fueron diseñados para su función.</li>
+        <li><strong>Los fósiles:</strong> restos de animales muertos en catástrofes, como el diluvio, o curiosidades de la roca.</li>
+      </ul>
+    </div>
+    <div class="grid">
+      <div class="card"><h3>Carlos Linneo (1707-1778)</h3><p>Creó el sistema de nombres con dos palabras (género y especie) en <em>Systema Naturae</em>. Ordenó a los seres vivos creyendo que cada especie era inmutable y que su clasificación revelaba el plan del Creador.</p></div>
+      <div class="card"><h3>Georges Cuvier (1769-1832)</h3><p>Fundó la paleontología al comparar huesos fósiles con los de animales actuales. Demostró que muchas especies se habían extinguido, pero lo explicó con el <strong>catastrofismo</strong>: catástrofes repentinas eliminaban especies y nuevas llegaban de otras regiones. Rechazó que unas derivaran de otras.</p></div>
+    </div>
+    <h3>¿Por qué fue superado?</h3>
+    <div class="prose">
+      <ul class="clean">
+        <li><strong>Los fósiles</strong> muestran una sucesión ordenada de formas a través de capas de roca, y hay formas intermedias, como <em>Archaeopteryx</em> entre dinosaurios y aves.</li>
+        <li><strong>La anatomía comparada</strong> revela estructuras homólogas: el brazo humano y el ala del murciélago tienen los mismos huesos.</li>
+        <li><strong>La biogeografía</strong> explica que islas cercanas tengan especies parecidas pero no iguales.</li>
+        <li><strong>La genética</strong> muestra que todos los seres vivos compartimos el código del ADN y que el parentesco se puede medir comparándolo.</li>
+        <li><strong>Observación directa</strong> de cambios: bacterias resistentes a antibióticos, pinzones, polillas.</li>
+      </ul>
+    </div>
+
+    <h3>Cuadro comparativo: fijismo y evolucionismo</h3>
+    <div class="tablewrap" tabindex="0" aria-label="Cuadro comparativo, desplazable">
+      <table>
+        <thead><tr><th>Aspecto</th><th>Fijismo</th><th>Evolucionismo</th></tr></thead>
+        <tbody>
+          <tr><td>Idea central</td><td>Las especies son fijas e inmutables.</td><td>Las especies cambian y se originan unas de otras.</td></tr>
+          <tr><td>Origen de las especies</td><td>Creación independiente de cada especie.</td><td>Descendencia con modificación a partir de ancestros comunes.</td></tr>
+          <tr><td>Edad de la Tierra</td><td>Joven, algunos miles de años.</td><td>Antigua, unos 4.600 millones de años.</td></tr>
+          <tr><td>Explicación de la adaptación</td><td>Diseño original para cada función.</td><td>Selección natural y otros mecanismos.</td></tr>
+          <tr><td>Los fósiles</td><td>Restos de catástrofes, sin parentesco entre sí.</td><td>Evidencia de ancestros y formas de transición.</td></tr>
+          <tr><td>Extinción</td><td>Cuvier la acepta, otros la niegan.</td><td>Proceso natural y frecuente en la historia de la vida.</td></tr>
+          <tr><td>Representantes</td><td>Linneo, Cuvier.</td><td>Lamarck, Darwin, Wallace.</td></tr>
+          <tr><td>Estado actual</td><td>Superado por la ciencia.</td><td>Base de la biología moderna.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="grid">
+      <div class="card"><h4>Semejanzas</h4><ul class="clean small"><li>Ambos intentan explicar la diversidad de seres vivos.</li><li>Ambos usan la observación y la clasificación de organismos.</li><li>Ambos reconocen que los fósiles son restos de seres vivos del pasado.</li><li>Ambos surgieron de naturalistas que estudiaron la naturaleza con detalle.</li></ul></div>
+      <div class="card"><h4>Diferencias clave</h4><ul class="clean small"><li>Si las especies cambian o no.</li><li>Si hay parentesco entre ellas.</li><li>Cómo se interpretan los fósiles.</li><li>Cuántos años tiene la vida en la Tierra.</li></ul></div>
+    </div>
+  </div>
+  <div class="vein-line"></div>
+</section>
+
+<!-- FOSILES -->
+<section id="fosiles">
+  <div class="sec-head">
+    <div class="eyebrow"><svg viewBox="0 0 40 80"><use href="#leafi"/></svg>Temática 1</div>
+    <h2>Los fósiles y su importancia</h2>
+  </div>
+  <div class="stack">
+    <div class="prose">
+      <p>Un fósil es un resto o una huella de un ser vivo que vivió hace más de unos 10.000 años y que quedó conservado en la roca. Casi siempre se forman cuando un organismo muere y queda enterrado rápido por sedimentos, y los minerales reemplazan poco a poco sus partes duras.</p>
+    </div>
+    <div class="grid">
+      <div class="card"><h4>Cuerpo mineralizado</h4><p class="small">Huesos, conchas y dientes convertidos en piedra. Ejemplo: amonites.</p></div>
+      <div class="card"><h4>Moldes e impresiones</h4><p class="small">La forma queda marcada en la roca. Ejemplo: hojas de helechos del Carbonífero.</p></div>
+      <div class="card"><h4>Icnofósiles</h4><p class="small">Huellas, nidos, excrementos y madrigueras. Muestran cómo vivían.</p></div>
+      <div class="card"><h4>Conservación excepcional</h4><p class="small">Insectos en ámbar o mamuts congelados, con tejidos blandos.</p></div>
+    </div>
+    <div class="grid">
+      <div class="card"><h3>Para el fijismo</h3><p>Los fósiles eran un problema. Cuvier los aceptó como prueba de especies extinguidas, pero los explicó con catástrofes sucesivas, sin parentesco entre las formas.</p></div>
+      <div class="card"><h3>Para el evolucionismo</h3><p>Son el registro de la historia de la vida. Su orden en las capas muestra cambios graduales, y las <strong>formas de transición</strong> unen grupos: <em>Archaeopteryx</em> (dinosaurios y aves) o <em>Tiktaalik</em> (peces y tetrápodos).</p></div>
+    </div>
+    <div class="note"><strong>Un fósil de casa.</strong> En Colombia, cerca de Villa de Leyva (Boyacá), se encontró <em>Kronosaurus boyacensis</em>, un reptil marino del Cretácico que vivió cuando esa región era un mar poco profundo.</div>
+  </div>
+  <div class="vein-line"></div>
+</section>
+
+<!-- ERAS -->
+<section id="eras">
+  <div class="sec-head">
+    <div class="eyebrow"><svg viewBox="0 0 40 80"><use href="#leafi"/></svg>Temática 1</div>
+    <h2>Eras geológicas y algunos fósiles</h2>
+  </div>
+  <div class="stack">
+    <div class="prose"><p>Los geólogos dividen los 4.600 millones de años de la Tierra en eras, separadas por grandes cambios en la vida. Esta barra muestra cuánto dura cada una en proporción.</p></div>
+    <div>
+      <div class="clock" role="img" aria-label="Proporción de cada era: Precámbrico 88%, Paleozoico 6%, Mesozoico 4%, Cenozoico 1,4%">
+        <i style="flex:4059;background:var(--moss)"></i><i style="flex:289;background:var(--fern)"></i><i style="flex:186;background:var(--clay)"></i><i style="flex:66;background:var(--ink)"></i>
+      </div>
+      <div class="legend"><span><b style="background:var(--moss)"></b>Precámbrico, 21 h 11 min</span><span><b style="background:var(--fern)"></b>Paleozoico, 1 h 30 min</span><span><b style="background:var(--clay)"></b>Mesozoico, 58 min</span><span><b style="background:var(--ink)"></b>Cenozoico, 21 min</span></div>
+      <p class="small muted" style="margin-top:.4rem">Equivalencia en un día de 24 horas.</p>
+    </div>
+    <div id="eraList" class="stack"></div>
+  </div>
+  <div class="vein-line"></div>
+</section>
+
+<!-- MECANISMOS -->
+<section id="mecanismos">
+  <div class="sec-head">
+    <div class="eyebrow"><svg viewBox="0 0 40 80"><use href="#leafi"/></svg>Temática 2</div>
+    <h2>Mecanismos de la evolución</h2>
+  </div>
+  <div class="stack">
+    <div class="prose">
+      <p>Todo mecanismo evolutivo trabaja sobre una materia prima: la <strong>variabilidad genética</strong>, es decir, las diferencias en los genes entre individuos de una población. Sin ella no hay nada que seleccionar.</p>
+      <p>Esa variabilidad surge de la <strong>mutación</strong> (cambios en el ADN), de la <strong>recombinación</strong> (en la meiosis los cromosomas se mezclan) y de la <strong>reproducción sexual</strong> (cada hijo recibe una combinación única). También entra con el <strong>flujo génico</strong> cuando llegan individuos de otra población.</p>
+    </div>
+    <div id="mecList" class="grid"></div>
+
+    <h3>Deriva genética: pruébala tú</h3>
+    <div class="prose"><p>Imagina una bolsa con canicas verdes y amarillas. Si sacas pocas para formar la siguiente generación, el azar puede dejar solo de un color. Eso es la deriva, y pega más fuerte en poblaciones pequeñas. Cada línea es una población que parte con 50 % de un alelo. Cambia el tamaño y compara.</p></div>
+    <div class="card">
+      <div class="sim">
+        <label for="nSlider">Individuos por población: <output id="nOut">20</output><input id="nSlider" type="range" min="10" max="500" step="10" value="20"></label>
+        <button class="btn" id="simBtn" type="button">Simular de nuevo</button>
+      </div>
+      <div class="scroll"><svg id="driftSvg" class="chart" viewBox="0 0 560 260" role="img" aria-label="Simulación de deriva genética" style="min-width:420px"></svg></div>
+      <p id="simOut" class="small"></p>
+    </div>
+
+    <h3>Importancia en poblaciones pequeñas y en la mezcla de poblaciones</h3>
+    <div class="grid">
+      <div class="card"><h4>Poblaciones pequeñas</h4><p class="small">Pierden variabilidad por deriva y por endogamia (cruces entre parientes). Aparecen enfermedades recesivas con más frecuencia y la población se adapta peor a cambios. Ejemplo: los guepardos pasaron por un cuello de botella y hoy tienen muy poca variación genética.</p></div>
+      <div class="card"><h4>Mezcla de poblaciones</h4><p class="small">El flujo génico introduce alelos nuevos, aumenta la variabilidad y reduce las diferencias entre poblaciones. Por eso se conectan reservas con corredores biológicos para especies amenazadas.</p></div>
+    </div>
+  </div>
+  <div class="vein-line"></div>
+</section>
+
+<!-- ESPECIACION -->
+<section id="especiacion">
+  <div class="sec-head">
+    <div class="eyebrow"><svg viewBox="0 0 40 80"><use href="#leafi"/></svg>Temática 2</div>
+    <h2>Especiación</h2>
+  </div>
+  <div class="stack">
+    <div class="prose"><p>La especiación es el proceso por el que una especie se divide en dos o más. Ocurre cuando dos grupos dejan de poder cruzarse y tener descendencia fértil. Eso se llama <strong>aislamiento reproductivo</strong>. Desde ese momento cada grupo acumula cambios por separado y evoluciona de manera independiente.</p></div>
+    <div id="espList" class="grid"></div>
+    <h3>Modelos de especiación</h3>
+    <div class="grid">
+      <div class="card"><h3>Gradual</h3><p class="small">Propuesto por Darwin. Las especies cambian poco a poco y de manera continua durante millones de años. El registro fósil debería mostrar muchas formas intermedias.</p></div>
+      <div class="card"><h3>Puntuado (equilibrio puntuado)</h3><p class="small">Propuesto por Eldredge y Gould en 1972. Las especies permanecen estables mucho tiempo (estasis) y los cambios importantes ocurren en lapsos geológicamente cortos, a menudo en poblaciones pequeñas y aisladas. Explica por qué faltan intermedios en el registro.</p></div>
+    </div>
+    <div class="scroll"><svg class="chart" viewBox="0 0 560 200" role="img" aria-label="Comparación de especiación gradual y puntuada" style="min-width:460px">
+      <text x="20" y="22" class="lbl">Gradual</text><text x="300" y="22" class="lbl">Puntuada</text>
+      <line class="ax" x1="20" y1="180" x2="270" y2="180"/><line class="ax" x1="300" y1="180" x2="540" y2="180"/>
+      <polyline class="tl" points="40,170 80,150 120,125 160,100 200,75 240,45"/>
+      <polyline class="tl" points="320,170 380,170 395,160 400,60 410,50 520,48"/>
+      <polyline class="tl" points="320,170 380,170 395,155 400,150 520,150" style="stroke:var(--fern)"/>
+      <text x="20" y="196">Tiempo →</text><text x="300" y="196">Tiempo →</text>
+      <text x="330" y="140">estasis</text><text x="445" y="40" class="mk">cambio rápido</text>
+    </svg></div>
+  </div>
+  <div class="vein-line"></div>
+</section>
+
+<!-- CONSECUENCIAS -->
+<section id="consecuencias">
+  <div class="sec-head">
+    <div class="eyebrow"><svg viewBox="0 0 40 80"><use href="#leafi"/></svg>Temática 2</div>
+    <h2>Consecuencias de la evolución</h2>
+  </div>
+  <div class="stack">
+    <div id="conList" class="grid"></div>
+    <h3>Diversificación de especies</h3>
+    <div class="grid">
+      <div class="card"><h3>Evolución convergente</h3><p class="small">Grupos sin relación cercana desarrollan estructuras parecidas porque enfrentan problemas similares. Los órganos resultantes son <strong>análogos</strong>: cumplen la misma función con distinto origen. Ejemplos: ala de ave y ala de insecto, aleta de delfín y de tiburón, ojo de pulpo y ojo humano.</p></div>
+      <div class="card"><h3>Evolución divergente</h3><p class="small">Un ancestro común da lugar a descendientes que se diferencian al ocupar ambientes distintos. Los órganos son <strong>homólogos</strong>: mismo origen, funciones distintas. Ejemplo: el miembro con cinco dedos en humano, murciélago, ballena y caballo.</p></div>
+    </div>
+    <figure class="scroll"><svg id="limbSvg" class="chart" viewBox="0 0 560 150" role="img" aria-label="Miembros homólogos" style="min-width:460px"></svg><figcaption>Esquema de huesos homólogos: húmero, radio y cúbito, carpo, falanges. La proporción cambia, el plan es el mismo.</figcaption></figure>
+  </div>
+  <div class="vein-line"></div>
+</section>
+
+<!-- MICRO MACRO -->
+<section id="micromacro">
+  <div class="sec-head">
+    <div class="eyebrow"><svg viewBox="0 0 40 80"><use href="#leafi"/></svg>Temática 3</div>
+    <h2>Microevolución y macroevolución</h2>
+  </div>
+  <div class="stack" id="micromacro-body">
+    <div class="tablewrap" tabindex="0" aria-label="Comparación, desplazable">
+      <table>
+        <thead><tr><th>Aspecto</th><th>Microevolución</th><th>Macroevolución</th></tr></thead>
+        <tbody>
+          <tr><td>Escala</td><td>Dentro de una especie o población.</td><td>Por encima del nivel de especie.</td></tr>
+          <tr><td>Tiempo</td><td>Pocas a cientos de generaciones.</td><td>Miles a millones de años.</td></tr>
+          <tr><td>Qué cambia</td><td>Frecuencia de alelos.</td><td>Aparición de especies, géneros, familias; extinciones.</td></tr>
+          <tr><td>Ejemplo</td><td>Resistencia de bacterias a antibióticos; polillas.</td><td>Origen de las aves; radiación de los mamíferos.</td></tr>
+          <tr><td>Mecanismos</td><td>Mutación, selección, deriva, flujo génico.</td><td>Los mismos, más especiación y extinción en el largo plazo.</td></tr>
+          <tr><td>Semejanza</td><td colspan="2">Ambas son evolución: la macroevolución es la suma de muchos eventos microevolutivos a lo largo del tiempo.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Tipos de selección natural</h3>
+    <div class="grid" id="selGrid"></div>
+
+    <h3>Filogenia, cladograma y árbol filogenético</h3>
+    <div class="grid">
+      <div class="card"><h4>Filogenia</h4><p class="small">Es la historia evolutiva y las relaciones de parentesco entre un grupo de organismos.</p></div>
+      <div class="card"><h4>Árbol filogenético</h4><p class="small">Dibujo que representa esa historia. Puede mostrar el tiempo en la longitud de las ramas.</p></div>
+      <div class="card"><h4>Cladograma</h4><p class="small">Árbol que solo muestra el orden de ramificación y los rasgos compartidos. La longitud de las ramas no significa tiempo.</p></div>
+    </div>
+    <figure class="scroll">
+      <svg class="chart" viewBox="0 0 600 240" role="img" aria-label="Cladograma de vertebrados" style="min-width:520px">
+        <path class="tl" d="M20 72H60M60 30V114M60 30H420M60 114H140M140 75V154M140 75H420M140 154H220M220 120V188M220 120H420M220 188H300M300 165V210M300 165H420M300 210H420"/>
+        <g class="lbl"><text x="428" y="35">Anfibios</text><text x="428" y="80">Mamíferos</text><text x="428" y="125">Lagartos</text><text x="428" y="170">Cocodrilos</text><text x="428" y="215">Aves</text></g>
+        <g><text x="86" y="108" class="mk">huevo amniótico</text><text x="262" y="69" class="mk">pelo y glándulas mamarias</text><text x="330" y="204" class="mk">plumas</text></g>
+        <circle cx="140" cy="114.4" r="4" fill="var(--clay)"/><circle cx="300" cy="187" r="4" fill="var(--fern)"/>
+      </svg>
+      <figcaption>Cada punto de ramificación es un ancestro común. Cocodrilos y aves están más emparentados entre sí que cualquiera de los dos con los lagartos.</figcaption>
+    </figure>
+
+    <h3>Tres escuelas de clasificación</h3>
+    <div class="grid">
+      <div class="card"><span class="tag">Cladista</span><h4>Método cladista (Willi Hennig)</h4><p class="small">Agrupa solo por <strong>caracteres derivados compartidos</strong> (sinapomorfías) y construye cladogramas. Acepta únicamente grupos <strong>monofiléticos</strong>: un ancestro y todos sus descendientes. Bajo este método las aves son dinosaurios y no existe el grupo «reptiles» sin ellas.</p></div>
+      <div class="card"><span class="tag">Feneticista</span><h4>Método feneticista (Sokal y Sneath)</h4><p class="small">Agrupa por la <strong>similitud global</strong>: cuenta cuántos caracteres comparten los organismos, sin importar si son ancestrales o derivados, y lo procesa con matrices. No intenta reconstruir la historia evolutiva.</p></div>
+      <div class="card"><span class="tag">Evolucionista</span><h4>Escuela evolucionista (Mayr, Simpson)</h4><p class="small">Combina el orden de ramificación con el <strong>grado de divergencia</strong>. Permite grupos <strong>parafiléticos</strong> si sus miembros ocupan una misma zona adaptativa. Por eso reconoce «reptiles» y «aves» como clases separadas.</p></div>
+    </div>
+
+    <h3>Radiación adaptativa</h3>
+    <div class="prose"><p>Ocurre cuando una especie ancestral se diversifica rápido en muchas especies que ocupan nichos distintos. Suele pasar cuando se abren oportunidades: islas nuevas o tras una extinción masiva. Ejemplos: los pinzones de Galápagos, los cíclidos de los lagos africanos y los mamíferos tras la desaparición de los dinosaurios.</p></div>
+    <figure class="scroll"><svg id="beakSvg" class="chart" viewBox="0 0 560 170" role="img" aria-label="Picos de pinzones" style="min-width:460px"></svg><figcaption>Cuatro tipos de pico derivados de un ancestro común. Dibujo esquemático.</figcaption></figure>
+  </div>
+  <div class="vein-line"></div>
+</section>
+
+<!-- EXTINCIONES -->
+<section id="extinciones">
+  <div class="sec-head">
+    <div class="eyebrow"><svg viewBox="0 0 40 80"><use href="#leafi"/></svg>Temática 3</div>
+    <h2>Extinciones masivas</h2>
+  </div>
+  <div class="stack">
+    <div class="prose"><p>Una extinción masiva es un periodo corto, en términos geológicos, en el que desaparece una gran parte de las especies del planeta. Se reconocen cinco grandes y una sexta en curso. Las cifras son estimaciones y cambian entre estudios. Ma significa millones de años.</p></div>
+    <div id="extList" class="stack"></div>
+  </div>
+  <div class="vein-line"></div>
+</section>
+
+<!-- GALERIA -->
+<section id="galeria">
+  <div class="sec-head">
+    <div class="eyebrow"><svg viewBox="0 0 40 80"><use href="#leafi"/></svg>Recursos</div>
+    <h2>Galería de imágenes y videos</h2>
+  </div>
+  <div class="stack">
+    <div class="prose"><p>Estas láminas son esquemas dibujados para el blog. Los fósiles de la ficha técnica pueden acompañarse con fotos reales de museos citando la fuente.</p></div>
+    <div id="galGrid" class="grid"></div>
+    <h3>Videos para ver</h3>
+    <div class="prose"><p class="small muted">Cada botón abre una búsqueda en YouTube. Antes de usar un video como fuente, revisa quién lo publicó y anota canal, título y fecha en la bibliografía.</p></div>
+    <div class="grid" id="vidGrid"></div>
+  </div>
+  <div class="vein-line"></div>
+</section>
+
+<!-- JUEGOS -->
+<section id="juegos">
+  <div class="sec-head">
+    <div class="eyebrow"><svg viewBox="0 0 40 80"><use href="#leafi"/></svg>Autoevaluación</div>
+    <h2>Juegos</h2>
+  </div>
+  <div class="stack">
+    <h3>Quiz de evolución</h3>
+    <div class="card"><div id="quiz" class="q"></div></div>
+    <h3>Memoria de conceptos</h3>
+    <p class="muted small">Voltea dos fichas y une cada concepto con su definición.</p>
+    <div class="card">
+      <div id="mem" class="mem"></div>
+      <div class="sim"><span id="memOut" class="small">Intentos: 0</span><button class="btn ghost" id="memBtn" type="button">Reiniciar</button></div>
+    </div>
+  </div>
+  <div class="vein-line"></div>
+</section>
+
+<!-- FORO -->
+<section id="foro">
+  <div class="sec-head">
+    <div class="eyebrow"><svg viewBox="0 0 40 80"><use href="#leafi"/></svg>Comunidad</div>
+    <h2>Foro de discusión</h2>
+  </div>
+  <div class="stack">
+    <div class="prose"><p>Deja una pregunta, una duda o una respuesta sobre cualquier tema del blog. Escribe con respeto y cita la sección de la que hablas.</p></div>
+    <div class="card">
+      <form class="f" id="foroForm">
+        <div class="two">
+          <label for="fNombre">Nombre<input id="fNombre" maxlength="40" required autocomplete="nickname"></label>
+          <label for="fTema">Tema<select id="fTema"><option>Teoría de la evolución</option><option>Fijismo</option><option>Fósiles y eras</option><option>Mecanismos</option><option>Especiación</option><option>Consecuencias</option><option>Micro y macroevolución</option><option>Extinciones</option><option>Otro</option></select></label>
+        </div>
+        <label for="fTexto">Mensaje<textarea id="fTexto" rows="3" maxlength="600" required></textarea></label>
+        <div class="sim"><button class="btn" type="submit">Publicar comentario</button><span id="foroEstado" class="small muted" role="status"></span></div>
+      </form>
+    </div>
+    <div id="foroList" class="stack"></div>
+  </div>
+  <div class="vein-line"></div>
+</section>
+
+<!-- BIBLIOGRAFIA -->
+<section id="biblio">
+  <div class="sec-head">
+    <div class="eyebrow"><svg viewBox="0 0 40 80"><use href="#leafi"/></svg>Fuentes</div>
+    <h2>Bibliografía y enlaces útiles</h2>
+  </div>
+  <div class="stack">
+    <h3>Sitios confiables</h3>
+    <div id="linkList" class="grid"></div>
+    <h3>Libros y artículos</h3>
+    <ul class="clean" id="bookList"></ul>
+    <p class="small muted">Completa cada referencia con editorial, edición y páginas consultadas según el formato que pida tu profesor (por ejemplo, APA).</p>
+  </div>
+</section>
+
+</div>
+</main>
+
+<footer><div class="wrap">Blog escolar de biología. Revisa y actualiza las secciones antes de cada entrega.</div></footer>
+
+<script>
+(function(){
+const $=s=>document.querySelector(s);
+const SVGNS="http://www.w3.org/2000/svg";
+function el(tag,attrs,html){const e=document.createElementNS(SVGNS,tag);for(const k in attrs)e.setAttribute(k,attrs[k]);if(html)e.textContent=html;return e}
+function h(tag,cls,html){const e=document.createElement(tag);if(cls)e.className=cls;if(html!==undefined)e.innerHTML=html;return e}
+
+/* ---------- fossil drawings ---------- */
+function fossilSvg(kind){
+  const s=el("svg",{viewBox:"0 0 200 150",class:"fossil",role:"img","aria-label":"Esquema de "+kind});
+  if(kind==="dickinsonia"){
+    s.appendChild(el("ellipse",{cx:100,cy:75,rx:70,ry:44,class:"fs"}));
+    for(let i=-6;i<=6;i++){const x=100+i*10;const dy=44*Math.sqrt(1-Math.pow(i*10/70,2));s.appendChild(el("line",{x1:x,y1:75-dy+2,x2:x,y2:75+dy-2,class:"fl"}))}
+    s.appendChild(el("line",{x1:100,y1:35,x2:100,y2:115,class:"fl"}));
+  }else if(kind==="trilobite"){
+    s.appendChild(el("ellipse",{cx:100,cy:75,rx:38,ry:62,class:"fs"}));
+    s.appendChild(el("path",{d:"M62 40Q100 -2 138 40Q100 52 62 40Z",class:"fs"}));
+    s.appendChild(el("path",{d:"M72 125Q100 152 128 125Q100 112 72 125Z",class:"fs"}));
+    for(let y=50;y<=118;y+=9){const dx=38*Math.sqrt(1-Math.pow((y-75)/62,2));s.appendChild(el("line",{x1:100-dx,y1:y,x2:100+dx,y2:y,class:"fl"}))}
+    s.appendChild(el("line",{x1:100,y1:52,x2:100,y2:118,class:"fl"}));
+  }else if(kind==="amonite"){
+    let pts=[];for(let t=0;t<=4*Math.PI;t+=.1){const r=4+3.4*t;pts.push((100+r*Math.cos(t)*1).toFixed(1)+","+(75+r*Math.sin(t)).toFixed(1))}
+    s.appendChild(el("polyline",{points:pts.join(" "),class:"fl",style:"stroke-width:3"}));
+    for(let t=1.2;t<=4*Math.PI;t+=.55){const r1=4+3.4*t,r2=4+3.4*(t+2*Math.PI);if(r2>72)break;s.appendChild(el("line",{x1:100+r1*Math.cos(t),y1:75+r1*Math.sin(t),x2:100+(r1+(r2-r1)*.55)*Math.cos(t),y2:75+(r1+(r2-r1)*.55)*Math.sin(t),class:"fl"}))}
+  }else if(kind==="smilodon"){
+    s.appendChild(el("path",{d:"M92 10C84 70 94 120 140 140C122 112 114 60 112 10Z",class:"fs"}));
+    s.appendChild(el("path",{d:"M92 10Q102 2 112 10",class:"fl"}));
+    for(let i=0;i<5;i++)s.appendChild(el("path",{d:"M"+(96+i*3)+" "+(30+i*4)+"Q"+(102+i*3)+" "+(26+i*4)+" "+(110)+" "+(30+i*4),class:"fl",style:"opacity:.5"}));
+  }else if(kind==="helecho"){
+    s.appendChild(el("path",{d:"M100 140C100 100 102 50 100 10",class:"fl",style:"stroke-width:2.5"}));
+    for(let y=22;y<=130;y+=10){const w=36*(1-Math.abs(y-80)/90);[-1,1].forEach(d=>s.appendChild(el("path",{d:"M100 "+y+"Q"+(100+d*w*.6)+" "+(y-10)+" "+(100+d*w)+" "+(y-4),class:"fs"})))}
+  }else if(kind==="pluma"){
+    s.appendChild(el("path",{d:"M60 138C70 90 100 40 150 12C146 60 120 110 60 138Z",class:"fs"}));
+    s.appendChild(el("path",{d:"M60 138C90 90 118 50 150 12",class:"fl"}));
+    for(let i=0;i<9;i++){const t=i/9;const x=62+t*86,y=136-t*120;s.appendChild(el("line",{x1:x,y1:y,x2:x+20-t*8,y2:y+10,class:"fl",style:"opacity:.6"}))}
+  }
+  return s;
+}
+
+/* ---------- eras ---------- */
+const ERAS=[
+ {n:"Precámbrico",t:"4.600 a 541 Ma",f:"dickinsonia",c:"Abarca casi el 90 % de la historia de la Tierra. Se forman los océanos y aparece la vida hace unos 3.800 millones de años.",
+  d:["<strong>Estromatolitos:</strong> estructuras de capas hechas por cianobacterias; algunas producían oxígeno.","<strong>Fauna de Ediacara:</strong> organismos de cuerpo blando, como <em>Dickinsonia</em>, de hace unos 570 Ma, entre los primeros seres grandes."],
+  fi:{nom:"Dickinsonia",era:"Precámbrico (Ediacárico, unos 571 a 541 Ma)",rep:"Poco clara; se cree que crecía añadiendo segmentos.",hab:"Fondos marinos poco profundos.",nut:"Probablemente absorbía nutrientes del fondo del mar.",reino:"Animalia, según evidencia de lípidos (hay debate).",cel:"Eucariota, pluricelular.",par:"Sin parientes actuales claros. Es un grupo extinto."}},
+ {n:"Paleozoico",t:"541 a 252 Ma",f:"trilobite",c:"La «explosión cámbrica» llena los mares de animales con esqueleto. Los peces dominan los océanos, las plantas y los artrópodos conquistan la tierra y aparecen los primeros tetrápodos.",
+  d:["<strong>Trilobites:</strong> artrópodos marinos muy abundantes del Cámbrico al Pérmico.","<strong>Helechos gigantes y árboles:</strong> formaron los bosques del Carbonífero y el carbón.","<strong>Tiktaalik:</strong> pez con rasgos de tetrápodo, del Devónico."],
+  fi:{nom:"Trilobite",era:"Paleozoico (Cámbrico a Pérmico)",rep:"Sexual, ovípara; mudaba su exoesqueleto al crecer.",hab:"Mares someros y fondos marinos.",nut:"Depredadores, carroñeros y filtradores, según la especie.",reino:"Animalia.",cel:"Eucariota, pluricelular.",par:"Artrópodos actuales (crustáceos, arañas, insectos). Su parecido más lejano es con el cangrejo herradura."}},
+ {n:"Mesozoico",t:"252 a 66 Ma",f:"amonite",c:"Es la «era de los reptiles». Se separa en Triásico, Jurásico y Cretácico. Aparecen los dinosaurios, las aves y los primeros mamíferos pequeños, y surgen las plantas con flor.",
+  d:["<strong>Amonites:</strong> moluscos marinos con concha en espiral, muy usados para fechar rocas.","<strong>Archaeopteryx:</strong> ave primitiva del Jurásico, con dientes y plumas.","<strong>Tyrannosaurus rex:</strong> gran depredador del Cretácico tardío.","<strong>Kronosaurus boyacensis:</strong> reptil marino hallado en Villa de Leyva, Colombia."],
+  fi:{nom:"Amonite",era:"Mesozoico (aparece en el Devónico y se extingue hace 66 Ma)",rep:"Sexual, ponía huevos.",hab:"Mares abiertos.",nut:"Carnívoro; capturaba presas pequeñas con tentáculos.",reino:"Animalia.",cel:"Eucariota, pluricelular.",par:"Cefalópodos actuales: calamares y pulpos. El Nautilus se le parece por la concha."}},
+ {n:"Cenozoico",t:"66 Ma hasta hoy",f:"smilodon",c:"Es la «era de los mamíferos». Se divide en Paleógeno, Neógeno y Cuaternario. Los continentes llegan a su posición actual, se expanden pastizales y aparecen los primeros homínidos.",
+  d:["<strong>Smilodon:</strong> felino de colmillos largos del Pleistoceno en América.","<strong>Mamut lanudo:</strong> proboscídeo adaptado al frío, hallado congelado en Siberia.","<strong>Australopithecus afarensis:</strong> homínido bípedo; «Lucy» tiene unos 3,2 Ma."],
+  fi:{nom:"Smilodon",era:"Cenozoico (Pleistoceno, hasta hace unos 10.000 años)",rep:"Sexual, vivíparo; las crías se alimentaban de leche.",hab:"Praderas y bosques abiertos de América.",nut:"Carnívoro, cazaba grandes herbívoros.",reino:"Animalia.",cel:"Eucariota, pluricelular.",par:"Felinos actuales como león y tigre. Su grupo, los machairodontinos, se extinguió."}}
+];
+const eraBox=$("#eraList");
+ERAS.forEach(e=>{
+  const w=h("div","era");
+  const left=h("div");
+  left.appendChild(fossilSvg(e.f));
+  const cap=h("p","small muted",e.f==="dickinsonia"?"Esquema de Dickinsonia":e.f==="trilobite"?"Esquema de un trilobite":e.f==="amonite"?"Esquema de un amonite":"Colmillo de Smilodon, esquema");
+  cap.style.marginTop=".4rem";left.appendChild(cap);
+  const right=h("div","stack");
+  right.innerHTML=`<div><span class="tag">${e.t}</span><h3 style="margin-top:.4rem">${e.n}</h3></div><p>${e.c}</p><ul class="clean small">${e.d.map(x=>"<li>"+x+"</li>").join("")}</ul>`;
+  const det=h("details");
+  det.innerHTML=`<summary>Ficha técnica: ${e.fi.nom}</summary><div><dl class="fi"><dt>Nombre</dt><dd>${e.fi.nom}</dd><dt>Era</dt><dd>${e.fi.era}</dd><dt>Reproducción</dt><dd>${e.fi.rep}</dd><dt>Hábitat</dt><dd>${e.fi.hab}</dd><dt>Nutrición</dt><dd>${e.fi.nut}</dd><dt>Reino</dt><dd>${e.fi.reino}</dd><dt>Tipo de célula</dt><dd>${e.fi.cel}</dd><dt>Parentesco actual</dt><dd>${e.fi.par}</dd></dl></div>`;
+  right.appendChild(det);
+  w.appendChild(left);w.appendChild(right);eraBox.appendChild(w);
+});
+
+/* ---------- card lists ---------- */
+function cards(sel,items){const box=$(sel);items.forEach(i=>{const c=h("div","card");c.innerHTML=`<h3>${i[0]}</h3>${i[1].map(p=>"<p class='small'>"+p+"</p>").join("")}`;box.appendChild(c)})}
+cards("#mecList",[
+ ["Selección natural",["Los individuos mejor ajustados dejan más descendientes.","<strong>Ejemplo:</strong> bacterias resistentes a antibióticos. Al aplicar el medicamento mueren casi todas, y las resistentes se reproducen y llenan la población."]],
+ ["Mutación",["Un cambio al azar en el ADN, como una errata al copiar una receta. Casi siempre es neutra, a veces dañina y pocas veces útil.","<strong>Ejemplo:</strong> la persistencia de la lactasa en adultos de poblaciones con tradición de ganadería lechera."]],
+ ["Deriva genética",["Cambios al azar en la frecuencia de alelos, más fuertes en poblaciones pequeñas. Incluye el <strong>cuello de botella</strong> y el <strong>efecto fundador</strong>.","<strong>Ejemplo:</strong> los guepardos casi desaparecieron hace unos 10.000 años y hoy son genéticamente muy parecidos."]],
+ ["Migración (flujo génico)",["Individuos o gametos que pasan de una población a otra llevan sus alelos. Reduce diferencias entre poblaciones.","<strong>Ejemplo:</strong> semillas y polen que viajan por el viento y el agua entre bosques separados."]],
+ ["Apareamiento no aleatorio",["Los individuos no se cruzan al azar. La <strong>endogamia</strong> aumenta los homocigotos; la <strong>selección sexual</strong> favorece rasgos que atraen pareja.","<strong>Ejemplo:</strong> la cola del pavo real, costosa pero atractiva."]]
+]);
+cards("#espList",[
+ ["Alopátrica",["Una barrera geográfica separa a la población: río, montaña, mar. Cada parte cambia por su cuenta.","<strong>Ejemplo:</strong> el istmo de Panamá separó poblaciones marinas hace unos 3 Ma y dio origen a especies hermanas a cada lado."]],
+ ["Peripátrica",["Un grupo pequeño se aísla en el borde del área de la especie. Es una variante de la alopátrica donde el efecto fundador pesa mucho.","<strong>Ejemplo:</strong> especies de moscas Drosophila de Hawái surgieron de unas pocas fundadoras que llegaron a islas nuevas."]],
+ ["Simpátrica",["Aparece sin barrera geográfica, en el mismo lugar. Suele darse por poliploidía en plantas o por preferencia de hábitat.","<strong>Ejemplo:</strong> la mosca Rhagoletis pomonella pasó de comer espino a comer manzanas y se están separando en dos grupos."]],
+ ["Parapátrica",["Poblaciones vecinas que comparten un borde, sin barrera, pero con ambientes distintos. Hay una zona estrecha de cruce.","<strong>Ejemplo:</strong> el pasto Anthoxanthum odoratum en suelos con metales de minas se separó del que crece al lado en suelo normal."]]
+]);
+cards("#conList",[
+ ["Adaptaciones anatómicas",["<strong>Camuflaje:</strong> el insecto palo parece una rama y la mariposa hoja se confunde con hojas secas.","<strong>Mimetismo:</strong> la falsa coral imita los colores de la coral venenosa para ahuyentar depredadores.","<strong>Estructuras:</strong> el pico del colibrí para el néctar, las aletas de la ballena, las espinas del cactus."]],
+ ["Adaptaciones fisiológicas",["<strong>Temperatura:</strong> el zorro ártico tiene orejas pequeñas que pierden poco calor, el zorro del desierto las tiene grandes para enfriarse.","<strong>Luz:</strong> plantas de sombra con más clorofila; peces de profundidad con ojos enormes.","<strong>Locomoción:</strong> patas largas del guepardo, membranas del pato."]],
+ ["Adaptaciones de comportamiento",["También llamadas etológicas.","<strong>Ejemplos:</strong> la migración de las mariposas monarca, la hibernación del oso, la danza de las abejas que indica dónde hay flores, el canto de las aves para marcar territorio."]]
+]);
+
+/* ---------- homologous limbs ---------- */
+(function(){
+  const s=$("#limbSvg");const names=["Humano","Murciélago","Ballena","Caballo"];
+  const cfg=[{h:34,r:30,f:26},{h:18,r:40,f:55},{h:12,r:14,f:28},{h:20,r:44,f:20}];
+  names.forEach((n,i)=>{const x0=20+i*135;const c=cfg[i];
+    s.appendChild(el("text",{x:x0,y:140,class:"lbl"},n));
+    let y=10;
+    s.appendChild(el("rect",{x:x0+6,y:y,width:12,height:c.h,rx:5,fill:"var(--fern)"}));y+=c.h+3;
+    s.appendChild(el("rect",{x:x0+2,y:y,width:7,height:c.r,rx:3,fill:"var(--moss)"}));
+    s.appendChild(el("rect",{x:x0+14,y:y,width:7,height:c.r,rx:3,fill:"var(--moss)"}));y+=c.r+3;
+    s.appendChild(el("rect",{x:x0,y:y,width:24,height:9,rx:4,fill:"var(--clay)"}));y+=12;
+    for(let k=0;k<5;k++)s.appendChild(el("rect",{x:x0+k*5,y:y,width:3.5,height:Math.min(c.f,140-y-20),rx:2,fill:"var(--line)"}));
+    s.lastChild;
+  });
+  const leg=el("text",{x:20,y:12},"");
+})();
+
+/* ---------- finch beaks ---------- */
+(function(){
+  const s=$("#beakSvg");
+  const B=[["Come semillas duras",42,26],["Come insectos",50,8],["Come cactus",66,13],["Usa herramientas",46,12]];
+  B.forEach((b,i)=>{const x=40+i*135;
+    s.appendChild(el("ellipse",{cx:x+40,cy:70,rx:34,ry:28,fill:"var(--leaf-soft)",stroke:"var(--moss)","stroke-width":2}));
+    s.appendChild(el("circle",{cx:x+52,cy:62,r:4,fill:"var(--ink)"}));
+    s.appendChild(el("polygon",{points:`${x+70},${70-b[2]/2} ${x+70+b[1]},72 ${x+70},${70+b[2]/2}`,fill:"var(--clay)",stroke:"var(--moss)","stroke-width":1.5}));
+    s.appendChild(el("text",{x:x,y:135,class:"lbl",style:"font-size:12px"},b[0]));
+  });
+})();
+
+/* ---------- selection charts ---------- */
+(function(){
+  const g=$("#selGrid");
+  const N=(x,m,sd)=>Math.exp(-0.5*Math.pow((x-m)/sd,2));
+  const defs=[
+   ["Direccional","Favorece un extremo. Ejemplo: polillas oscuras en troncos con hollín.",x=>N(x,50,12),x=>N(x,66,12)],
+   ["Estabilizadora","Favorece lo intermedio. Ejemplo: el peso al nacer de los bebés humanos.",x=>N(x,50,16),x=>N(x,50,8)],
+   ["Disruptiva","Favorece ambos extremos. Ejemplo: pinzones con picos pequeños o muy grandes, sin intermedios.",x=>N(x,50,14),x=>.8*N(x,34,7)+.8*N(x,66,7)]
+  ];
+  defs.forEach(d=>{
+    const c=h("div","card");c.innerHTML=`<h3>${d[0]}</h3>`;
+    const s=el("svg",{viewBox:"0 0 240 150",class:"chart",role:"img","aria-label":"Selección "+d[0].toLowerCase()});
+    s.appendChild(el("line",{x1:20,y1:120,x2:230,y2:120,class:"ax"}));s.appendChild(el("line",{x1:20,y1:10,x2:20,y2:120,class:"ax"}));
+    const path=f=>{let p="";for(let x=0;x<=100;x+=2){const X=20+x*2.1,Y=120-f(x)*95;p+=(x?"L":"M")+X.toFixed(1)+" "+Y.toFixed(1)}return p};
+    s.appendChild(el("path",{d:path(d[2]),class:"before"}));s.appendChild(el("path",{d:path(d[3]),class:"after"}));
+    s.appendChild(el("text",{x:20,y:140},"Rasgo (p. ej. tamaño)"));s.appendChild(el("text",{x:30,y:20},"individuos"));
+    c.appendChild(s);c.insertAdjacentHTML("beforeend",`<p class="small">${d[1]}</p><p class="small muted">Línea punteada: antes. Línea continua: después.</p>`);
+    g.appendChild(c);
+  });
+})();
+
+/* ---------- extinctions ---------- */
+const EXT=[
+ ["Ordovícico-Silúrico","Hace unos 445 Ma","Cerca del 85 % de las especies, casi todas marinas.","Trilobites, graptolitos, braquiópodos y corales.","Glaciación del supercontinente Gondwana: el nivel del mar bajó y el clima se enfrió. Después subió y faltó oxígeno en el agua.","Se reorganizaron las comunidades marinas, pero los grandes grupos sobrevivieron."],
+ ["Devónico tardío","Hace unos 372 a 359 Ma (varios pulsos)","Cerca del 75 % de las especies.","Placodermos (peces acorazados), arrecifes de corales y esponjas, muchos trilobites.","Enfriamiento y falta de oxígeno en los océanos, posiblemente ligados a la expansión de las plantas terrestres.","Desaparecieron los grandes arrecifes de esa época y se abrió paso a los tetrápodos."],
+ ["Pérmico-Triásico («la Gran Mortandad»)","Hace unos 252 Ma","Entre 90 y 96 % de las especies marinas y cerca del 70 % de los vertebrados terrestres.","Últimos trilobites, euriptéridos, muchos corales y anfibios.","Vulcanismo enorme en Siberia que liberó CO₂, calentó el planeta y acidificó y desoxigenó los mares.","Fue la mayor de la historia. La vida tardó millones de años en recuperarse y comenzó el Mesozoico."],
+ ["Triásico-Jurásico","Hace unos 201 Ma","Cerca del 76 % de las especies.","Conodontos, muchos arcosaurios no dinosaurios y grandes anfibios.","Erupciones masivas al abrirse el océano Atlántico, con cambio climático y acidificación.","Los dinosaurios quedaron sin competidores y dominaron el Jurásico."],
+ ["Cretácico-Paleógeno","Hace unos 66 Ma","Cerca del 76 % de las especies.","Dinosaurios no avianos, pterosaurios, plesiosaurios, amonites.","Impacto de un asteroide en Chicxulub (México) junto con intensas erupciones en la India (Decán).","Sobrevivieron aves, mamíferos pequeños y cocodrilos. Los mamíferos se diversificaron."],
+ ["Holoceno o Antropoceno (en curso)","Desde hace siglos hasta hoy","Las tasas de pérdida son muy superiores a las normales. Los científicos debaten si ya es la sexta.","Dodo, tigre de Tasmania, paloma migratoria, rinoceronte negro occidental.","Pérdida de hábitat, caza, especies invasoras, contaminación y cambio climático causados por los humanos.","Aún podemos reducirla con protección de hábitats y especies, y con menos emisiones."]
+];
+const eb=$("#extList");
+EXT.forEach((x,i)=>{
+  const d=h("details");if(i===2)d.open=true;
+  d.innerHTML=`<summary>${x[0]} <span class="muted small">· ${x[1]}</span></summary><div><dl class="fi"><dt>Especies</dt><dd>${x[2]}</dd><dt>Ejemplos</dt><dd>${x[3]}</dd><dt>Causas</dt><dd>${x[4]}</dd><dt>Consecuencias</dt><dd>${x[5]}</dd></dl></div>`;
+  eb.appendChild(d);
+});
+
+/* ---------- gallery ---------- */
+(function(){
+  const g=$("#galGrid");
+  [["dickinsonia","Dickinsonia, Precámbrico"],["trilobite","Trilobite, Paleozoico"],["helecho","Hoja de helecho, Carbonífero"],["amonite","Amonite, Mesozoico"],["pluma","Pluma de Archaeopteryx, Jurásico"],["smilodon","Colmillo de Smilodon, Cenozoico"]].forEach(a=>{
+    const f=h("figure");f.appendChild(fossilSvg(a[0]));f.appendChild(h("figcaption","",a[1]));g.appendChild(f);
+  });
+  const V=[["Selección natural","evolución selección natural explicación"],["Eras geológicas","eras geológicas historia de la Tierra"],["Pinzones de Darwin","pinzones de Darwin Galápagos documental"],["Extinciones masivas","las cinco extinciones masivas"],["Especiación","especiación alopátrica simpátrica explicación"],["Deriva genética","deriva genética explicación"]];
+  const vb=$("#vidGrid");
+  V.forEach(v=>{const c=h("div","card");c.innerHTML=`<h4>${v[0]}</h4><a class="btn ghost" style="text-align:center;text-decoration:none;display:block" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=${encodeURIComponent(v[1])}">Buscar en YouTube</a>`;vb.appendChild(c)});
+})();
+
+/* ---------- bibliography ---------- */
+const LINKS=[
+ ["Understanding Evolution (UC Berkeley)","https://evolution.berkeley.edu/","Recurso educativo en inglés con lecciones y ejemplos."],
+ ["Darwin Online","http://darwin-online.org.uk/","Obras y manuscritos de Darwin digitalizados."],
+ ["Museo Nacional de Ciencias Naturales (CSIC)","https://www.mncn.csic.es/","Museo español con contenidos de paleontología y evolución."],
+ ["Natural History Museum, Londres","https://www.nhm.ac.uk/","Colecciones de fósiles y artículos de divulgación."],
+ ["Smithsonian: Human Origins","https://humanorigins.si.edu/","Evolución humana y fósiles de homínidos."],
+ ["Khan Academy en español: Evolución","https://es.khanacademy.org/science/biology","Lecciones y ejercicios de biología."],
+ ["Servicio Geológico Colombiano","https://www.sgc.gov.co/","Geología y museo geológico de Colombia."]
+];
+LINKS.forEach(l=>{const c=h("div","card");c.innerHTML=`<h4><a target="_blank" rel="noopener" href="${l[1]}">${l[0]}</a></h4><p class="small muted">${l[2]}</p>`;$("#linkList").appendChild(c)});
+["Darwin, C. (1859). <em>El origen de las especies</em>.","Dawkins, R. (2009). <em>El mayor espectáculo sobre la Tierra</em>.","Weiner, J. (1994). <em>El pico del pinzón</em>.","Gould, S. J. (1989). <em>La vida maravillosa</em>.","Shubin, N. (2008). <em>Tu pez interior</em>.","Kolbert, E. (2014). <em>La sexta extinción</em>.","Eldredge, N. y Gould, S. J. (1972). Punctuated equilibria: an alternative to phyletic gradualism.","Kettlewell, H. B. D. (1955). Selection experiments on industrial melanism in the Lepidoptera. <em>Heredity</em>, 9."].forEach(t=>{$("#bookList").appendChild(h("li","",t))});
+
+/* ---------- drift simulator ---------- */
+(function(){
+  const svg=$("#driftSvg"),sl=$("#nSlider"),out=$("#nOut"),res=$("#simOut");
+  const G=40,P=6;
+  function run(){
+    const N=+sl.value;out.textContent=N;svg.innerHTML="";
+    svg.appendChild(el("line",{x1:40,y1:10,x2:40,y2:220,class:"ax"}));svg.appendChild(el("line",{x1:40,y1:220,x2:545,y2:220,class:"ax"}));
+    [0,50,100].forEach(v=>{const y=220-v*2.1;svg.appendChild(el("text",{x:6,y:y+4},v+"%"));svg.appendChild(el("line",{x1:40,y1:y,x2:545,y2:y,class:"ax",style:"opacity:.4"}))});
+    svg.appendChild(el("text",{x:40,y:245},"Generación 0"));svg.appendChild(el("text",{x:480,y:245},"Gen. "+G));
+    let fixed=0;
+    for(let k=0;k<P;k++){
+      let p=.5,pts=[];
+      for(let g=0;g<=G;g++){pts.push((40+g*(505/G)).toFixed(1)+","+(220-p*210).toFixed(1));
+        if(p>0&&p<1){let c=0;for(let i=0;i<2*N;i++)if(Math.random()<p)c++;p=c/(2*N)}}
+      if(p===0||p===1)fixed++;
+      svg.appendChild(el("polyline",{points:pts.join(" "),class:"p"+(k%3)}));
+    }
+    res.textContent=fixed+" de "+P+" poblaciones llegaron a 0 % o 100 % en "+G+" generaciones. Frecuencia inicial del alelo: 50 %.";
+  }
+  sl.addEventListener("input",run);$("#simBtn").addEventListener("click",run);run();
+})();
+
+/* ---------- quiz ---------- */
+(function(){
+  const Q=[
+   ["¿Quién propuso que los caracteres adquiridos por el uso de un órgano se heredan?",["Darwin","Lamarck","Wallace","Cuvier"],1,"Lamarck defendió el uso y desuso y la herencia de lo adquirido. Hoy esa idea no se acepta."],
+   ["¿Por qué aumentaron las polillas oscuras en Manchester?",["Mutaron por el hollín","Se camuflaban mejor en troncos oscuros y las aves comían menos de ellas","Migraron desde otro país","Las claras dejaron de reproducirse"],1,"Fue selección natural: el color que menos veían las aves dejó más descendencia."],
+   ["El fijismo afirma que las especies...",["Cambian lentamente","Se originan unas de otras","Fueron creadas tal como son y no cambian","Se extinguen sin dejar fósiles"],2,"Linneo y Cuvier son sus representantes más conocidos."],
+   ["Las alas de un insecto y las de un ave son un ejemplo de...",["Evolución divergente y órganos homólogos","Evolución convergente y órganos análogos","Mimetismo","Deriva genética"],1,"Cumplen la misma función pero tienen origen distinto."],
+   ["¿Qué mecanismo tiene más peso en poblaciones muy pequeñas?",["Deriva genética","Selección sexual","Flujo génico","Extinción"],0,"Con pocos individuos, el azar cambia rápido las frecuencias de alelos."],
+   ["La especiación alopátrica necesita...",["Una barrera geográfica","Poliploidía","Que no haya selección","Mutaciones iguales"],0,"Una montaña, río o mar divide la población y cada parte evoluciona sola."],
+   ["¿Qué extinción acabó con los dinosaurios no avianos?",["Pérmico-Triásico","Triásico-Jurásico","Devónico tardío","Cretácico-Paleógeno"],3,"Ocurrió hace unos 66 Ma, con el impacto de Chicxulub."],
+   ["El equilibrio puntuado propone que...",["Los cambios son constantes y lentos","Largos periodos estables se interrumpen con cambios rápidos","Las especies nunca cambian","Solo hay extinción"],1,"Lo propusieron Eldredge y Gould en 1972."],
+   ["El método cladista clasifica por...",["Similitud general","Rasgos derivados compartidos","El tamaño del organismo","Su hábitat"],1,"Esos rasgos se llaman sinapomorfías y definen grupos monofiléticos."],
+   ["Una extinción ocurre cuando...",["Un individuo muere","Desaparece toda una especie","Una especie cambia de color","Se mezclan dos poblaciones"],1,"Se extingue una especie cuando muere el último individuo."]
+  ];
+  let i=0,score=0;const box=$("#quiz");
+  function show(){
+    box.innerHTML="";
+    if(i>=Q.length){box.innerHTML=`<h3>Obtuviste ${score} de ${Q.length}</h3><p>${score>=8?"Muy bien, dominas el tema.":score>=5?"Vas bien. Repasa las secciones donde fallaste.":"Vuelve a leer las secciones y prueba otra vez."}</p>`;const b=h("button","btn","Intentar de nuevo");b.type="button";b.onclick=()=>{i=0;score=0;show()};box.appendChild(b);return}
+    const q=Q[i];
+    box.appendChild(h("span","muted small","Pregunta "+(i+1)+" de "+Q.length));
+    box.appendChild(h("h3","",q[0]));
+    const o=h("div","opts");const fb=h("p","small");fb.setAttribute("role","status");
+    q[1].forEach((t,k)=>{const b=h("button","opt",t);b.type="button";b.onclick=()=>{
+      [...o.children].forEach((c,j)=>{c.disabled=true;if(j===q[2])c.classList.add("ok");else if(j===k)c.classList.add("bad")});
+      if(k===q[2]){score++;fb.textContent="Correcto. "+q[3]}else fb.textContent="No es esa. "+q[3];
+      const n=h("button","btn",i<Q.length-1?"Siguiente":"Ver resultado");n.type="button";n.onclick=()=>{i++;show()};box.appendChild(n);n.focus();
+    };o.appendChild(b)});
+    box.appendChild(o);box.appendChild(fb);
+  }
+  show();
+})();
+
+/* ---------- memory ---------- */
+(function(){
+  const P=[["Mutación","Cambio al azar en el ADN"],["Deriva genética","Cambio al azar de frecuencias, fuerte en poblaciones pequeñas"],["Flujo génico","Paso de genes entre poblaciones"],["Órganos análogos","Misma función, distinto origen"],["Órganos homólogos","Mismo origen, función distinta"],["Fósil","Resto o huella de vida antigua"]];
+  const box=$("#mem"),out=$("#memOut");let first=null,lock=false,tries=0,done=0;
+  function build(){
+    box.innerHTML="";tries=0;done=0;first=null;out.textContent="Intentos: 0";
+    const cards=[];P.forEach((p,i)=>{cards.push({id:i,t:p[0]});cards.push({id:i,t:p[1]})});
+    cards.sort(()=>Math.random()-.5);
+    cards.forEach(c=>{const b=h("button","tile");b.type="button";b.dataset.id=c.id;b.dataset.t=c.t;b.setAttribute("aria-label","Ficha oculta");
+      b.innerHTML='<svg viewBox="0 0 40 80" aria-hidden="true"><use href="#leafi"/></svg>';
+      b.onclick=()=>{if(lock||b.classList.contains("up")||b.classList.contains("done"))return;
+        b.classList.add("up");b.textContent=c.t;b.removeAttribute("aria-label");
+        if(!first){first=b;return}
+        tries++;out.textContent="Intentos: "+tries;
+        if(first.dataset.id===b.dataset.id){first.classList.replace("up","done");b.classList.replace("up","done");first=null;done++;if(done===P.length)out.textContent="Terminaste en "+tries+" intentos.";}
+        else{lock=true;const a=first;first=null;setTimeout(()=>{[a,b].forEach(x=>{x.classList.remove("up");x.innerHTML='<svg viewBox="0 0 40 80" aria-hidden="true"><use href="#leafi"/></svg>'});lock=false},1000)}
+      };box.appendChild(b)});
+  }
+  $("#memBtn").onclick=build;build();
+})();
+
+/* ---------- forum ---------- */
+(async function(){
+  const list=$("#foroList"),state=$("#foroEstado");
+  let db=null,col=null,posts=[];
+  const LS="foro_local";
+  function loadLocal(){try{return JSON.parse(localStorage.getItem(LS)||"[]")}catch(e){return []}}
+  function saveLocal(a){try{localStorage.setItem(LS,JSON.stringify(a.slice(0,100)))}catch(e){}}
+  function render(){
+    list.innerHTML="";
+    if(!posts.length){list.appendChild(h("p","muted","Todavía no hay comentarios. Escribe el primero."));return}
+    posts.forEach(p=>{
+      const d=h("div","post");const m=h("div","meta");
+      m.textContent=(p.n||"Anónimo")+" · "+(p.tema||"")+" · "+new Date(p.t).toLocaleString("es-CO",{dateStyle:"medium",timeStyle:"short"});
+      const t=h("p");t.textContent=p.x;d.appendChild(m);d.appendChild(t);list.appendChild(d);
+    });
+  }
+  try{
+    if(window.claude&&claude.use){db=await claude.use("db")}
+    if(db){col=db.collection("foro");
+      col.orderBy("t","desc").limit(100).onSnapshot(s=>{posts=s.docs.map(d=>d.data());render()},()=>{db=null;col=null;posts=loadLocal();render();state.textContent="Los comentarios se guardan solo en este navegador."});
+    }
+  }catch(e){db=null}
+  if(!db){posts=loadLocal();render();state.textContent="Los comentarios se guardan solo en este navegador."}
+  $("#foroForm").addEventListener("submit",async ev=>{
+    ev.preventDefault();
+    const p={n:$("#fNombre").value.trim().slice(0,40),tema:$("#fTema").value,x:$("#fTexto").value.trim().slice(0,600),t:Date.now()};
+    if(!p.x)return;
+    let ok=false;
+    if(col){try{await col.add(p);ok=true;state.textContent="Comentario publicado."}catch(e){col=null;db=null;state.textContent="No tienes permiso para escribir en el foro compartido. Se guardó solo en este navegador."}}
+    if(!ok){posts=[p].concat(posts.length&&posts[0].t?posts:loadLocal());saveLocal(posts);render();if(!state.textContent)state.textContent="Guardado en este navegador."}
+    $("#fTexto").value="";
+  });
+})();
+})();
+</script>
+
+</body></html>
